@@ -7,6 +7,11 @@ import (
 )
 
 func main() {
+	go StartServer()
+	fmt.Scanln()
+}
+
+func StartServer() {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", func(w http.ResponseWriter, req *http.Request) {
 		fmt.Fprintf(w, "Go Back")
