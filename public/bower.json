@@ -1,0 +1,19 @@
+{
+  "name": "GoBack",
+  "version": "0.0.1",
+  "homepage": "https://github.com/oriphin/goback",
+  "authors": [
+    "troy_schuetrumpf <oriphinz@gmail.com>"
+  ],
+  "description": "GoBackend POC",
+  "main": "app.js",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
