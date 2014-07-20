@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"github.com/codegangsta/negroni"
 	"github.com/gorilla/mux"
@@ -15,9 +16,7 @@ func main() {
 func StartServer() {
 
 	router := mux.NewRouter()
-	router.HandleFunc("/api", func(w http.ResponseWriter, req *http.Request) {
-		fmt.Fprintf(w, "Go Back")
-	})
+	router.HandleFunc("/api", TestAPIHandler)
 
 	static := negroni.NewStatic(http.Dir("public"))
 	static.IndexFile = "templates/index.html"
@@ -29,4 +28,14 @@ func StartServer() {
 	n.UseHandler(router)
 
 	n.Run(":4000")
+}
+
+type Human struct {
+	Username string
+}
+
+func TestAPIHandler(w http.ResponseWriter, r *http.Request) {
+	user := &Human{Username: "Oriphin"}
+	j := json.NewEncoder(w)
+	j.Encode(user)
 }
