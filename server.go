@@ -35,6 +35,7 @@ type Human struct {
 }
 
 func TestAPIHandler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
 	user := &Human{Username: "Oriphin"}
 	j := json.NewEncoder(w)
 	j.Encode(user)
