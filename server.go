@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/codegangsta/negroni"
+	"github.com/gorilla/mux"
 	"net/http"
 )
 
@@ -12,12 +13,20 @@ func main() {
 }
 
 func StartServer() {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/", func(w http.ResponseWriter, req *http.Request) {
+
+	router := mux.NewRouter()
+	router.HandleFunc("/api", func(w http.ResponseWriter, req *http.Request) {
 		fmt.Fprintf(w, "Go Back")
 	})
 
-	n := negroni.Classic()
-	n.UseHandler(mux)
+	static := negroni.NewStatic(http.Dir("public"))
+	static.IndexFile = "templates/index.html"
+
+	n := negroni.New(
+		negroni.NewRecovery(),
+		negroni.NewLogger(),
+		static)
+	n.UseHandler(router)
+
 	n.Run(":4000")
 }
