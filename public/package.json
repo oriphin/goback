@@ -1,0 +1,16 @@
+{
+  "name": "GoBack",
+  "version": "0.0.1",
+  "description": "Go Backend POC",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "github.com/oriphin/goback"
+  },
+  "author": "troy_schuetrumpf <oriphinz@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/oriphin/goback/issues"
+  },
+  "homepage": "https://github.com/oriphin/goback"
+}
